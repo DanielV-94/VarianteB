@@ -18,65 +18,79 @@
 </head>
 
 <body>
-  <div class="loader" id="loader">
-    <div><b>Servicios Premium</b>
-      <div class="loader-track"><span id="progressBar"></span></div>
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader-cinematic">
+      <p class="loader-scene is-active">Servicios White-Glove</p>
+      <p class="loader-scene">Decisiones patrimoniales con precisión</p>
+      <p class="loader-scene">Arquitectura, inversión y ejecución</p>
     </div>
   </div>
-  <div class="page">
+
+  <div class="page interior-luxe services-page">
+    <div class="luxe-noise" aria-hidden="true"></div>
     <div class="page-transition-overlay" aria-hidden="true"></div>
 
     <header class="topbar">
       <div class="container nav">
-<<<<<<< HEAD
-        <a class="brand" href="./dex.html">LAA <span>Editorial</span></a>
-        <a class="brand" href="./dex.html">LAA <span>Real Estate</span></a>
-        <nav class="links">
-          <a href="./dex.html">Inicio</a>
-=======
-        <a class="brand" href="./index.html">LAA <span>Editorial</span></a>
         <a class="brand" href="./index.html">LAA <span>Real Estate</span></a>
         <nav class="links">
           <a href="./index.html">Inicio</a>
->>>>>>> c2be438 (.)
           <a href="./coleccion.html">Colección</a>
           <a href="./servicios.html">Servicios</a>
           <a href="./contacto.html">Contacto</a>
         </nav>
-        <a class="pill" href="./contacto.html">Book a call</a>
+        <a class="pill" href="./contacto.html">Consulta Privada</a>
       </div>
     </header>
 
-    <main class="container split" style="padding-top:2.4rem">
-      <article class="panel reveal">
-        <p class="kicker">REAL ESTATE ADVISORY</p>
-        <h2>Bienes Raíces de Alto Patrimonio</h2>
-        <p>Asesoría integral para la compra, venta y renta de propiedades de lujo. Nuestro equipo diseña estrategias de
-          inversión personalizadas para maximizar el retorno de capital en los mercados premium de México.</p>
-        <ul class="srv-list">
-          <li>Compra y venta de propiedades de lujo</li>
-          <li>Renta de activos premium</li>
-          <li>Gestión integral de patrimonio</li>
-          <li>Estrategias de inversión inmobiliaria</li>
-        </ul>
-        <img src="./assets/consultation-service.jpg" alt="Consultoría de lujo"
-          style="border-radius:.8rem; margin-top:.7rem; width:100%; height:280px; object-fit:cover;" />
-      </article>
+    <main class="container interior-main">
+      <section class="interior-hero reveal">
+        <div>
+          <p class="kicker">SERVICIOS PREMIUM</p>
+          <h1 class="reveal-title interior-title">Diseñamos estrategias inmobiliarias y arquitectónicas para clientes de
+            alto patrimonio.</h1>
+          <p class="interior-lead">Integramos visión financiera, legal y de diseño para transformar cada activo en una
+            ventaja competitiva sostenible.</p>
+          <div class="interior-badges reveal">
+            <span>Compra · Venta · Renta</span>
+            <span>Asset Management</span>
+            <span>Arquitectura de autor</span>
+          </div>
+        </div>
+        <div class="interior-hero-media reveal">
+          <img src="./assets/consultation-service.jpg" alt="Servicios premium de real estate" />
+        </div>
+      </section>
 
-      <article class="panel reveal">
-        <p class="kicker">ARCHITECTURE VISION</p>
-        <h2>Despacho Arquitectónico de Vanguardia</h2>
-        <p>Transformamos propiedades en activos memorables. Nuestro despacho ofrece diseño arquitectónico, remodelación
-          e interiorismo para clientes que buscan espacios únicos que reflejen su personalidad y estilo de vida.</p>
-        <ul class="srv-list">
-          <li>Diseño arquitectónico de autor</li>
-          <li>Remodelación y restauración</li>
-          <li>Interiorismo y decoración</li>
-          <li>Supervisión de obra</li>
-        </ul>
-        <img src="./assets/architecture-service.jpg" alt="Diseño arquitectónico"
-          style="border-radius:.8rem; margin-top:.7rem; width:100%; height:280px; object-fit:cover;" />
-      </article>
+      <section class="split interior-split">
+        <article class="panel reveal">
+          <p class="kicker">REAL ESTATE ADVISORY</p>
+          <h2>Bienes raíces de alto patrimonio</h2>
+          <p>Asesoría integral para compra, venta y renta en segmentos high-end con lectura de mercado, blindaje legal y
+            negociación de alto ticket.</p>
+          <ul class="srv-list">
+            <li>Compra y venta de propiedades de lujo</li>
+            <li>Estrategias de renta premium</li>
+            <li>Análisis de plusvalía por zona</li>
+            <li>Estructuración fiscal y legal</li>
+          </ul>
+          <img class="panel-media" src="./assets/consultation-service.jpg" alt="Consultoría inmobiliaria premium" />
+        </article>
+
+        <article class="panel reveal">
+          <p class="kicker">ARCHITECTURE VISION</p>
+          <h2>Arquitectura e interiorismo de legado</h2>
+          <p>Convertimos propiedades en piezas icónicas mediante diseño arquitectónico bespoke, materialidad premium y
+            ejecución con estándares internacionales.</p>
+          <ul class="srv-list">
+            <li>Concepto arquitectónico de autor</li>
+            <li>Remodelación y restauración integral</li>
+            <li>Interiorismo sensorial y marca personal</li>
+            <li>Supervisión y control de obra</li>
+          </ul>
+          <img class="panel-media" src="./assets/architecture-service.jpg" alt="Arquitectura de vanguardia" />
+        </article>
+      </section>
     </main>
 
     <footer class="container footer">
@@ -86,11 +100,7 @@
         <span>contacto@laarealestate.com · +52 (55) 1234-5678</span>
       </div>
       <div class="footer-ed-nav">
-<<<<<<< HEAD
-        <a href="./dex.html">Inicio</a>
-=======
         <a href="./index.html">Inicio</a>
->>>>>>> c2be438 (.)
         <a href="./coleccion.html">Colección</a>
         <a href="./contacto.html">Contacto</a>
       </div>

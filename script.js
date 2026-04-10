@@ -13,7 +13,7 @@ const loader = document.getElementById("loader");
 const bar = document.getElementById("progressBar");
 const loaderScenes = gsap.utils.toArray(".loader-scene");
 
-if (loader && bar) {
+if (loader) {
   const loaderTl = gsap.timeline();
 
   if (loaderScenes.length) {
@@ -21,7 +21,7 @@ if (loader && bar) {
       loaderTl.fromTo(
         scene,
         { autoAlpha: index === 0 ? 1 : 0, y: 14 },
-        { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out" },
+        { autoAlpha: 1, y: 0, duration: 0.75, ease: "power2.out" },
         index === 0 ? 0 : ">-0.02",
       );
       if (index < loaderScenes.length - 1) {
@@ -30,25 +30,20 @@ if (loader && bar) {
           {
             autoAlpha: 0,
             y: -10,
-            duration: 0.3,
+            duration: 0.55,
             ease: "power2.in",
           },
-          ">+0.2",
+          ">+0.7",
         );
       }
     });
   }
 
-  loaderTl.to(bar, {
-    width: "100%",
-    duration: 1.05,
-    ease: "power2.out",
-  });
-
   loaderTl.to(loader, {
     autoAlpha: 0,
-    duration: 0.5,
+    duration: 0.7,
     ease: "power2.inOut",
+    delay: 0.5,
     onComplete: () => loader.classList.add("hide"),
   });
 }
@@ -109,6 +104,56 @@ const initGenericReveals = () => {
       );
     });
   }
+};
+
+/* ───────────────────────────────────────────────
+   Interior luxe pages experience
+   ─────────────────────────────────────────────── */
+const initInteriorLuxe = () => {
+  const interiorRoot = document.querySelector(".interior-luxe");
+  if (!interiorRoot) return;
+
+  // Active link state by pathname
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  interiorRoot.querySelectorAll(".links a").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const target = href.split("/").pop();
+    if (target === currentPath) {
+      link.style.color = "#8c5b2d";
+    }
+  });
+
+  if (prefersReducedMotion) return;
+
+  // Hero media parallax
+  gsap.utils.toArray(".interior-hero-media img").forEach((img) => {
+    gsap.fromTo(
+      img,
+      { yPercent: -4, scale: 1.1 },
+      {
+        yPercent: 8,
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: img.closest(".interior-hero-media") || img,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    );
+  });
+
+  // Subtle floating badges
+  gsap.utils.toArray(".interior-badges span").forEach((badge, idx) => {
+    gsap.to(badge, {
+      y: idx % 2 === 0 ? -6 : -3,
+      duration: 1.8 + idx * 0.12,
+      yoyo: true,
+      repeat: -1,
+      ease: "sine.inOut",
+    });
+  });
 };
 
 /* ───────────────────────────────────────────────
@@ -277,6 +322,60 @@ const initHomeLuxe = () => {
     });
   }
 
+  // Hero cinematic micro-parallax (desktop)
+  if (
+    !prefersReducedMotion &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    const heroStage = document.querySelector(".hero-stage");
+    const heroMedia = document.querySelector(".hero-main-media");
+    const floatCards = gsap.utils.toArray(".hero-float-card");
+
+    if (heroStage && heroMedia) {
+      heroStage.addEventListener("mousemove", (event) => {
+        const rect = heroStage.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(heroMedia, {
+          rotateY: px * 3.2,
+          rotateX: py * -2.2,
+          transformPerspective: 1100,
+          duration: 0.55,
+          ease: "power3.out",
+        });
+
+        floatCards.forEach((card, idx) => {
+          const direction = idx === 0 ? 1 : -1;
+          gsap.to(card, {
+            x: px * 18 * direction,
+            rotateZ: px * 1.6 * direction,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+        });
+      });
+
+      heroStage.addEventListener("mouseleave", () => {
+        gsap.to(heroMedia, {
+          rotateY: 0,
+          rotateX: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        });
+
+        floatCards.forEach((card) => {
+          gsap.to(card, {
+            x: 0,
+            rotateZ: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        });
+      });
+    }
+  }
+
   // Counters
   document.querySelectorAll(".counter").forEach((counter) => {
     const target = Number(counter.dataset.target || 0);
@@ -406,19 +505,22 @@ const initHomeLuxe = () => {
     });
   }
 
-  // Signature strip drift
-  const strip = document.querySelector(".strip-track");
-  if (strip && !prefersReducedMotion) {
-    gsap.to(strip, {
-      xPercent: -26,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".signature-strip",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
+  // Signature strip marquee — anima solo cuando está visible en viewport
+  const stripSection = document.querySelector(".signature-strip");
+  if (stripSection && !prefersReducedMotion) {
+    const stripObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            stripSection.classList.add("is-visible");
+          } else {
+            stripSection.classList.remove("is-visible");
+          }
+        });
       },
-    });
+      { threshold: 0.1 },
+    );
+    stripObserver.observe(stripSection);
   }
 
   // Manifiesto cards reveal
@@ -485,16 +587,49 @@ if (route && !isHomeLuxe) {
 }
 
 /* ───────────────────────────────────────────────
-   Cards interaction (internal pages)
+   Premium interactive surfaces (all pages)
    ─────────────────────────────────────────────── */
-document.querySelectorAll(".card").forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    gsap.to(card, { y: -6, duration: 0.25, ease: "power2.out" });
+if (!prefersReducedMotion) {
+  gsap.utils.toArray(".card, .panel").forEach((surface) => {
+    surface.addEventListener("mouseenter", () => {
+      gsap.to(surface, { y: -8, duration: 0.28, ease: "power2.out" });
+    });
+
+    surface.addEventListener("mousemove", (event) => {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+        return;
+      const rect = surface.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      gsap.to(surface, {
+        rotateY: x * 3,
+        rotateX: y * -2,
+        transformPerspective: 1000,
+        duration: 0.35,
+        ease: "power2.out",
+      });
+    });
+
+    surface.addEventListener("mouseleave", () => {
+      gsap.to(surface, {
+        y: 0,
+        rotateY: 0,
+        rotateX: 0,
+        duration: 0.45,
+        ease: "power3.out",
+      });
+    });
   });
-  card.addEventListener("mouseleave", () => {
-    gsap.to(card, { y: 0, duration: 0.35, ease: "power3.out" });
+
+  gsap.utils.toArray(".pill").forEach((pill) => {
+    pill.addEventListener("mouseenter", () => {
+      gsap.to(pill, { y: -2, duration: 0.2, ease: "power2.out" });
+    });
+    pill.addEventListener("mouseleave", () => {
+      gsap.to(pill, { y: 0, duration: 0.3, ease: "power3.out" });
+    });
   });
-});
+}
 
 /* ───────────────────────────────────────────────
    Form feedback
@@ -550,4 +685,5 @@ const initPageTransitions = () => {
 /* Boot */
 initGenericReveals();
 if (isHomeLuxe) initHomeLuxe();
+initInteriorLuxe();
 initPageTransitions();
