@@ -16,8 +16,9 @@ const loaderScenes = gsap.utils.toArray(".loader-scene");
 const runLoader = () => {
   if (!loader) return;
 
-  // Mostrar loader visible de inmediato (el fondo negro cubre la pantalla sin flash)
-  gsap.set(loader, { display: "flex", autoAlpha: 1 });
+  // Mostrar loader con clase CSS — preserva flex centering sin que GSAP lo rompa
+  loader.classList.add("is-visible");
+  gsap.set(loader, { opacity: 1, visibility: "visible" });
 
   const loaderTl = gsap.timeline();
 
@@ -40,11 +41,12 @@ const runLoader = () => {
   }
 
   loaderTl.to(loader, {
-    autoAlpha: 0,
+    opacity: 0,
     duration: 0.7,
     ease: "power2.inOut",
     delay: 0.5,
     onComplete: () => {
+      loader.classList.remove("is-visible");
       loader.classList.add("hide");
       // Revelar la página solo cuando el loader termina
       document.body.classList.add("page-ready");
@@ -62,7 +64,8 @@ if (introGate && introGateBtn) {
   introGateBtn.addEventListener("click", () => {
     // 1. Cubrir con loader negro INMEDIATAMENTE — sin flash del hero
     if (loader) {
-      gsap.set(loader, { display: "flex", autoAlpha: 1 });
+      loader.classList.add("is-visible");
+      gsap.set(loader, { opacity: 1, visibility: "visible" });
     }
 
     // 2. Animar salida del gate encima del fondo negro

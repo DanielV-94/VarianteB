@@ -38,8 +38,18 @@ img {
   z-index: 600;
   background: #0f1116;
   color: #f8f4ea;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader.is-visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* La página permanece invisible hasta que JS la desbloquea */
