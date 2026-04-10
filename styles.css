@@ -41,6 +41,14 @@ img {
   display: grid;
   place-items: center;
 }
+
+/* La página permanece invisible hasta que JS la desbloquea */
+.page {
+  visibility: hidden;
+}
+body.page-ready .page {
+  visibility: visible;
+}
 .loader.hide {
   pointer-events: none;
 }
@@ -50,8 +58,12 @@ img {
 }
 
 .loader-cinematic {
-  min-width: min(460px, 86vw);
-  text-align: center;
+  position: relative;
+  width: min(560px, 88vw);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loader-scene {
@@ -60,27 +72,20 @@ img {
   font-size: clamp(1.6rem, 4.5vw, 2.6rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-align: center;
   color: rgba(245, 238, 223, 0.55);
   opacity: 0;
-  transform: translateY(14px);
   position: absolute;
-  left: 50%;
-  transform-origin: center;
-  translate: -50% 0;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
 .loader-scene.is-active {
   opacity: 1;
   color: rgba(245, 238, 223, 0.95);
-}
-
-.loader-cinematic {
-  position: relative;
-  min-height: 90px;
-  display: grid;
-  align-content: center;
-  gap: 0.5rem;
 }
 
 .topbar {

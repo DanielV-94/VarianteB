@@ -25,14 +25,14 @@ const runLoader = () => {
     loaderScenes.forEach((scene, index) => {
       loaderTl.fromTo(
         scene,
-        { autoAlpha: index === 0 ? 1 : 0, y: 14 },
-        { autoAlpha: 1, y: 0, duration: 0.75, ease: "power2.out" },
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.75, ease: "power2.out" },
         index === 0 ? 0 : ">-0.02",
       );
       if (index < loaderScenes.length - 1) {
         loaderTl.to(
           scene,
-          { autoAlpha: 0, y: -10, duration: 0.55, ease: "power2.in" },
+          { autoAlpha: 0, duration: 0.55, ease: "power2.in" },
           ">+0.7",
         );
       }
@@ -44,7 +44,11 @@ const runLoader = () => {
     duration: 0.7,
     ease: "power2.inOut",
     delay: 0.5,
-    onComplete: () => loader.classList.add("hide"),
+    onComplete: () => {
+      loader.classList.add("hide");
+      // Revelar la página solo cuando el loader termina
+      document.body.classList.add("page-ready");
+    },
   });
 };
 
@@ -56,15 +60,15 @@ const introGateBtn = document.getElementById("introGateBtn");
 
 if (introGate && introGateBtn) {
   introGateBtn.addEventListener("click", () => {
-    // 1. Mostrar loader de fondo INMEDIATAMENTE (cubre el hero antes de que el gate desaparezca)
+    // 1. Cubrir con loader negro INMEDIATAMENTE — sin flash del hero
     if (loader) {
-      gsap.set(loader, { display: "flex", autoAlpha: 0 });
+      gsap.set(loader, { display: "flex", autoAlpha: 1 });
     }
 
-    // 2. Animar salida del gate
+    // 2. Animar salida del gate encima del fondo negro
     introGate.classList.add("is-leaving");
 
-    // 3. Tras la animación de salida, fade-in del loader y reproducir audio
+    // 3. Tras la animación de salida, reproducir audio y lanzar textos del loader
     setTimeout(() => {
       introGate.style.display = "none";
 
@@ -77,9 +81,9 @@ if (introGate && introGateBtn) {
         }
       }
 
-      // Lanzar animación del loader
+      // Lanzar animación del loader (ya visible, solo anima los textos y luego sale)
       runLoader();
-    }, 680); // coincide con duración de gateLeave
+    }, 680);
   });
 } else {
   // No hay gate (otras páginas): ejecutar loader directo
