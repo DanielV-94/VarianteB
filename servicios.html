@@ -38,15 +38,18 @@
     <header class="topbar">
       <div class="container nav">
         <a class="brand" href="./index.html">LAA <span>Real Estate</span></a>
-        <nav class="links">
-          <a href="./index.html">Inicio</a>
-          <a href="./coleccion.html">Coleccion</a>
-          <a href="./servicios.html" class="nav-active">Servicios</a>
-          <a href="./contacto.html">Contacto</a>
-        </nav>
-        <a class="pill" href="./contacto.html">Consulta Privada</a>
+        <a class="pill nav-cta-desktop" href="./contacto.html">Consulta Privada</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </header>
+    <nav class="links" id="mainNav" aria-hidden="true">
+      <a href="./index.html">Inicio</a>
+      <a href="./coleccion.html">Coleccion</a>
+      <a href="./servicios.html" class="nav-active">Servicios</a>
+      <a href="./contacto.html">Contacto</a>
+    </nav>
 
     <main>
       <!-- INNER HERO -->

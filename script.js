@@ -50,6 +50,11 @@ const runLoader = () => {
       loader.classList.add("hide");
       // Revelar la página solo cuando el loader termina
       document.body.classList.add("page-ready");
+      // Refrescar ScrollTrigger DESPUÉS de que la página sea visible
+      // (crítico en móvil: los elementos estaban hidden y las posiciones eran 0)
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh(true);
+      });
     },
   });
 };
@@ -146,6 +151,8 @@ const initGenericReveals = () => {
       });
     }
 
+    const isMobile = window.matchMedia("(max-width: 860px)").matches;
+
     gsap.utils.toArray(".reveal").forEach((el) => {
       gsap.fromTo(
         el,
@@ -157,8 +164,8 @@ const initGenericReveals = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
-            toggleActions: "play reverse play reverse",
+            start: isMobile ? "top 98%" : "top 88%",
+            toggleActions: "play none none none",
           },
         },
       );
@@ -282,8 +289,10 @@ const initPropCards = () => {
   const cards = gsap.utils.toArray(".prop-card");
   if (!cards.length) return;
 
-  if (!prefersReducedMotion) {
-    // Stagger entrance
+  const isMobile = window.matchMedia("(max-width: 860px)").matches;
+
+  if (!prefersReducedMotion && !isMobile) {
+    // Stagger entrance — solo desktop
     ScrollTrigger.batch(cards, {
       onEnter: (els) => {
         gsap.fromTo(
@@ -301,6 +310,9 @@ const initPropCards = () => {
       },
       start: "top 86%",
     });
+  } else {
+    // Móvil: mostrar inmediatamente sin animación
+    gsap.set(cards, { opacity: 1, y: 0, scale: 1, visibility: "visible" });
   }
 
   // 3D tilt on hover (desktop only)
@@ -335,7 +347,15 @@ const initPropCards = () => {
    ─────────────────────────────────────────────── */
 const initSrvPanels = () => {
   const panels = document.querySelectorAll(".srv-panel-media");
-  if (!panels.length || prefersReducedMotion) return;
+  if (!panels.length) return;
+
+  // En móvil (sin hover) no hacer clip-path reveal ni parallax — mostrar directo
+  const isMobile = window.matchMedia("(max-width: 860px)").matches;
+
+  if (prefersReducedMotion || isMobile) {
+    panels.forEach((p) => p.classList.add("revealed"));
+    return;
+  }
 
   const io = new IntersectionObserver(
     (entries) => {
@@ -346,7 +366,7 @@ const initSrvPanels = () => {
         }
       });
     },
-    { threshold: 0.15, rootMargin: "-40px" },
+    { threshold: 0.05, rootMargin: "0px" },
   );
   panels.forEach((p) => io.observe(p));
 
@@ -1017,11 +1037,51 @@ const initVideoLuxe = () => {
 };
 
 /* ───────────────────────────────────────────────
+   Nav hamburguesa — menú móvil
+   ─────────────────────────────────────────────── */
+const initHamburger = () => {
+  const btn = document.getElementById("hamburger");
+  const nav = document.getElementById("mainNav");
+  if (!btn || !nav) return;
+
+  const close = () => {
+    btn.classList.remove("is-open");
+    nav.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    nav.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  const open = () => {
+    btn.classList.add("is-open");
+    nav.classList.add("is-open");
+    btn.setAttribute("aria-expanded", "true");
+    nav.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  // Cerrar al hacer clic en un enlace del menú
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", close);
+  });
+
+  btn.addEventListener("click", () => {
+    btn.classList.contains("is-open") ? close() : open();
+  });
+
+  // Cerrar al presionar Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn.classList.contains("is-open")) close();
+  });
+};
+
+/* ───────────────────────────────────────────────
    Boot
    ─────────────────────────────────────────────── */
 initGenericReveals();
 initLuxeCursor();
 initNavHover();
+initHamburger();
 initCounters();
 initPageTransitions();
 
