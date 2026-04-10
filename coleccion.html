@@ -4,11 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAA Real Estate — Colección Signature</title>
-  <meta name="description"
-    content="Colección Signature de LAA Real Estate: residencias curadas en mercados premium de México." />
-  <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23f4f1ec'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-size='46' font-family='Arial' fill='%238c5b2d'%3EL%3C/text%3E%3C/svg%3E" />
+  <title>LAA Real Estate - Coleccion Signature</title>
+  <meta name="description" content="Coleccion Signature LAA Real Estate: propiedades exclusivas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,24 +15,31 @@
 </head>
 
 <body>
-  <div class="loader" id="loader" aria-live="polite">
+  <!-- LOADER -->
+  <div class="loader loader-inner" id="loader" aria-live="polite">
     <div class="loader-cinematic">
-      <p class="loader-scene is-active">Colección Signature</p>
-      <p class="loader-scene">Activos irrepetibles, curaduría privada</p>
-      <p class="loader-scene">Mercados premium de México</p>
+      <p class="loader-scene is-active">Coleccion Signature</p>
+      <p class="loader-scene">Activos irrepetibles</p>
     </div>
   </div>
 
-  <div class="page interior-luxe collection-page">
+  <!-- PAGE WRAPPER -->
+  <div class="page inner-luxe">
     <div class="luxe-noise" aria-hidden="true"></div>
+    <div class="luxe-cursor" aria-hidden="true"></div>
     <div class="page-transition-overlay" aria-hidden="true"></div>
+    <div class="scroll-progress-line" aria-hidden="true"></div>
+    <div class="capa-overlay" aria-hidden="true">
+      <img src="./assets/Capa 11.svg" alt="" />
+    </div>
 
+    <!-- NAV -->
     <header class="topbar">
       <div class="container nav">
         <a class="brand" href="./index.html">LAA <span>Real Estate</span></a>
         <nav class="links">
           <a href="./index.html">Inicio</a>
-          <a href="./coleccion.html">Colección</a>
+          <a href="./coleccion.html" class="nav-active">Coleccion</a>
           <a href="./servicios.html">Servicios</a>
           <a href="./contacto.html">Contacto</a>
         </nav>
@@ -43,85 +47,112 @@
       </div>
     </header>
 
-    <main class="container interior-main">
-      <section class="interior-hero reveal">
-        <div>
-          <p class="kicker">COLECCIÓN SIGNATURE</p>
-          <h1 class="reveal-title interior-title">Propiedades exclusivas seleccionadas para preservar y multiplicar su
-            legado.</h1>
-          <p class="interior-lead">Acceda a un inventario curado con enfoque en plusvalía, diseño y ubicación
-            estratégica en los destinos más codiciados del país.</p>
-          <div class="interior-badges reveal">
-            <span>Off-market</span>
-            <span>Entrega inmediata</span>
-            <span>Asesoría fiscal premium</span>
-          </div>
+    <main>
+      <!-- INNER HERO -->
+      <section class="inner-hero container">
+        <div class="inner-hero-eyebrow">
+          <span class="kicker reveal">PORTAFOLIO DE ACTIVOS &mdash; LAA SIGNATURE</span>
+          <span class="inner-hero-line" aria-hidden="true"></span>
         </div>
-        <div class="interior-hero-media reveal">
-          <img src="./assets/hero-mansion.jpg" alt="Colección premium de residencias de alto valor" />
-        </div>
+        <h1 class="inner-h1 reveal-title" id="innerTitle">Propiedades que<br />definen legado.</h1>
+        <p class="inner-hero-sub reveal">Acceso privado a los activos inmobiliarios m&aacute;s selectos de
+          M&eacute;xico. Cada propiedad, una pieza de arquitectura, inversi&oacute;n y estilo de vida excepcional.</p>
       </section>
 
-      <section class="cards-grid interior-cards">
-        <article class="card reveal">
-          <img src="./assets/property-penthouse.jpg" alt="Penthouse Skyline" />
-          <div>
-            <h3>Penthouse Skyline</h3>
-            <p>Polanco, CDMX</p>
-            <p class="price">$45,000,000 MXN</p>
+      <!-- GRID DE PROPIEDADES -->
+      <section class="coleccion-grid container">
+
+        <article class="prop-card reveal" data-index="0">
+          <div class="prop-card-media">
+            <img src="./assets/property-penthouse.jpg" alt="Penthouse Skyline CDMX" loading="lazy" />
+            <div class="prop-card-overlay">
+              <a class="pill solid prop-card-cta" href="./contacto.html">Ver detalles</a>
+            </div>
+            <span class="prop-card-badge">Nueva Listing</span>
+          </div>
+          <div class="prop-card-body">
+            <p class="prop-card-location">Polanco, CDMX</p>
+            <h2 class="prop-card-title">Penthouse Skyline</h2>
+            <p class="prop-card-price">$45,000,000 <span>MXN</span></p>
             <ul class="specs">
-              <li>4 Recámaras</li>
-              <li>5 Baños</li>
-              <li>450 m²</li>
-              <li>Nueva Listing</li>
+              <li>4 Rec&aacute;maras</li>
+              <li>5 Ba&ntilde;os</li>
+              <li>450 m&sup2;</li>
             </ul>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="./assets/property-villa.jpg" alt="Villa Toscana" />
-          <div>
-            <h3>Villa Toscana</h3>
-            <p>Valle de Bravo, Estado de México</p>
-            <p class="price">$28,500,000 MXN</p>
+        <article class="prop-card reveal" data-index="1">
+          <div class="prop-card-media">
+            <img src="./assets/property-villa.jpg" alt="Villa Toscana Valle de Bravo" loading="lazy" />
+            <div class="prop-card-overlay">
+              <a class="pill solid prop-card-cta" href="./contacto.html">Ver detalles</a>
+            </div>
+            <span class="prop-card-badge">Exclusiva</span>
+          </div>
+          <div class="prop-card-body">
+            <p class="prop-card-location">Valle de Bravo, Edo. Mex.</p>
+            <h2 class="prop-card-title">Villa Toscana</h2>
+            <p class="prop-card-price">$28,500,000 <span>MXN</span></p>
             <ul class="specs">
-              <li>5 Recámaras</li>
-              <li>6 Baños</li>
-              <li>680 m²</li>
-              <li>Exclusiva</li>
+              <li>5 Rec&aacute;maras</li>
+              <li>6 Ba&ntilde;os</li>
+              <li>680 m&sup2;</li>
             </ul>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="./assets/property-beach.jpg" alt="Casa Azure" />
-          <div>
-            <h3>Casa Azure</h3>
-            <p>Punta Mita, Nayarit</p>
-            <p class="price">$62,000,000 MXN</p>
+        <article class="prop-card reveal" data-index="2">
+          <div class="prop-card-media">
+            <img src="./assets/property-beach.jpg" alt="Casa Azure Punta Mita" loading="lazy" />
+            <div class="prop-card-overlay">
+              <a class="pill solid prop-card-cta" href="./contacto.html">Ver detalles</a>
+            </div>
+            <span class="prop-card-badge">Frente al Mar</span>
+          </div>
+          <div class="prop-card-body">
+            <p class="prop-card-location">Punta Mita, Nayarit</p>
+            <h2 class="prop-card-title">Casa Azure</h2>
+            <p class="prop-card-price">$62,000,000 <span>MXN</span></p>
             <ul class="specs">
-              <li>6 Recámaras</li>
-              <li>7 Baños</li>
-              <li>820 m²</li>
-              <li>Frente al Mar</li>
+              <li>6 Rec&aacute;maras</li>
+              <li>7 Ba&ntilde;os</li>
+              <li>820 m&sup2;</li>
             </ul>
           </div>
         </article>
+
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="inner-cta container">
+        <div class="cta-panel reveal">
+          <p class="kicker">LAA REAL ESTATE &mdash; OFF-MARKET</p>
+          <h2>&iquest;Busca una propiedad exclusiva?</h2>
+          <p>Accedemos a listings privados y propiedades off-market que no se publican. Hable con nuestro equipo.</p>
+          <a class="pill solid" href="./contacto.html">Solicitar acceso privado</a>
+        </div>
       </section>
     </main>
 
     <footer class="container footer">
       <div class="footer-ed-brand">
         <b>LAA Real Estate</b>
-        <span>Paseo de la Reforma 250, Col. Juárez · CDMX 06600</span>
-        <span>contacto@laarealestate.com · +52 (55) 1234-5678</span>
+        <span>Paseo de la Reforma 250, Col. Ju&aacute;rez CDMX 06600</span>
+        <span>ventas@laarealstate.com · +52 (33) 2313-6849</span>
+        <span>
+          <a href="https://wa.me/5213323136849" target="_blank" rel="noopener">WhatsApp: +52 (33) 2313-6849</a>
+          &nbsp;·&nbsp;
+          <a href="https://instagram.com/laarealestate" target="_blank" rel="noopener">@laarealestate</a>
+        </span>
       </div>
       <div class="footer-ed-nav">
         <a href="./index.html">Inicio</a>
+        <a href="./coleccion.html">Coleccion</a>
         <a href="./servicios.html">Servicios</a>
         <a href="./contacto.html">Contacto</a>
       </div>
-      <p class="footer-ed-copy">© 2026 LAA Real Estate. Todos los derechos reservados.</p>
+      <p class="footer-ed-copy">&copy; 2026 LAA Real Estate. Todos los derechos reservados.</p>
     </footer>
   </div>
 

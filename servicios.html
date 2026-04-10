@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAA Real Estate — Servicios White-Glove</title>
+  <title>LAA Real Estate - Servicios White-Glove</title>
   <meta name="description"
-    content="Servicios de LAA Real Estate: compra y venta de lujo, gestión de patrimonio, arquitectura e interiorismo de vanguardia en México." />
-  <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23f4f1ec'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-size='46' font-family='Arial' fill='%238c5b2d'%3EL%3C/text%3E%3C/svg%3E" />
+    content="Servicios de alto valor LAA Real Estate: asesoria, estructuracion y concierge inmobiliario." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,93 +16,136 @@
 </head>
 
 <body>
-  <div class="loader" id="loader" aria-live="polite">
+  <!-- LOADER -->
+  <div class="loader loader-inner" id="loader" aria-live="polite">
     <div class="loader-cinematic">
       <p class="loader-scene is-active">Servicios White-Glove</p>
-      <p class="loader-scene">Decisiones patrimoniales con precisión</p>
-      <p class="loader-scene">Arquitectura, inversión y ejecución</p>
+      <p class="loader-scene">Arquitectura de alto valor</p>
     </div>
   </div>
 
-  <div class="page interior-luxe services-page">
+  <!-- PAGE WRAPPER -->
+  <div class="page inner-luxe">
     <div class="luxe-noise" aria-hidden="true"></div>
+    <div class="luxe-cursor" aria-hidden="true"></div>
     <div class="page-transition-overlay" aria-hidden="true"></div>
+    <div class="scroll-progress-line" aria-hidden="true"></div>
+    <div class="capa-overlay" aria-hidden="true">
+      <img src="./assets/Capa 11.svg" alt="" />
+    </div>
 
+    <!-- NAV -->
     <header class="topbar">
       <div class="container nav">
         <a class="brand" href="./index.html">LAA <span>Real Estate</span></a>
         <nav class="links">
           <a href="./index.html">Inicio</a>
-          <a href="./coleccion.html">Colección</a>
-          <a href="./servicios.html">Servicios</a>
+          <a href="./coleccion.html">Coleccion</a>
+          <a href="./servicios.html" class="nav-active">Servicios</a>
           <a href="./contacto.html">Contacto</a>
         </nav>
         <a class="pill" href="./contacto.html">Consulta Privada</a>
       </div>
     </header>
 
-    <main class="container interior-main">
-      <section class="interior-hero reveal">
-        <div>
-          <p class="kicker">SERVICIOS PREMIUM</p>
-          <h1 class="reveal-title interior-title">Diseñamos estrategias inmobiliarias y arquitectónicas para clientes de
-            alto patrimonio.</h1>
-          <p class="interior-lead">Integramos visión financiera, legal y de diseño para transformar cada activo en una
-            ventaja competitiva sostenible.</p>
-          <div class="interior-badges reveal">
-            <span>Compra · Venta · Renta</span>
-            <span>Asset Management</span>
-            <span>Arquitectura de autor</span>
-          </div>
+    <main>
+      <!-- INNER HERO -->
+      <section class="inner-hero container">
+        <div class="inner-hero-eyebrow">
+          <span class="kicker reveal">SERVICIOS EXCLUSIVOS &mdash; LAA WHITE-GLOVE</span>
+          <span class="inner-hero-line" aria-hidden="true"></span>
         </div>
-        <div class="interior-hero-media reveal">
-          <img src="./assets/consultation-service.jpg" alt="Servicios premium de real estate" />
-        </div>
+        <h1 class="inner-h1 reveal-title" id="innerTitle">Servicio de<br />clase excepcional.</h1>
+        <p class="inner-hero-sub reveal">Gestionamos cada aspecto de su transacci&oacute;n inmobiliaria con
+          precisi&oacute;n, discrecci&oacute;n y un nivel de servicio reservado para pocos.</p>
       </section>
 
-      <section class="split interior-split">
-        <article class="panel reveal">
-          <p class="kicker">REAL ESTATE ADVISORY</p>
-          <h2>Bienes raíces de alto patrimonio</h2>
-          <p>Asesoría integral para compra, venta y renta en segmentos high-end con lectura de mercado, blindaje legal y
-            negociación de alto ticket.</p>
-          <ul class="srv-list">
-            <li>Compra y venta de propiedades de lujo</li>
-            <li>Estrategias de renta premium</li>
-            <li>Análisis de plusvalía por zona</li>
-            <li>Estructuración fiscal y legal</li>
-          </ul>
-          <img class="panel-media" src="./assets/consultation-service.jpg" alt="Consultoría inmobiliaria premium" />
+      <!-- SERVICIOS -->
+      <section class="srv-section container">
+
+        <article class="srv-panel reveal">
+          <div class="srv-panel-content">
+            <p class="kicker">01 &mdash; ASESORIA</p>
+            <h2>Asesor&iacute;a Patrimonial Integral</h2>
+            <p class="srv-panel-desc">Dise&ntilde;amos estrategias personalizadas de adquisici&oacute;n,
+              estructuraci&oacute;n y salida de activos inmobiliarios de alto valor. Cada decisi&oacute;n, respaldada
+              por an&aacute;lisis de mercado en tiempo real y red de contactos exclusivos.</p>
+            <ul class="srv-list">
+              <li>An&aacute;lisis de portafolio y diversificaci&oacute;n</li>
+              <li>Due diligence legal y financiero</li>
+              <li>Estructuraci&oacute;n fiscal optimizada</li>
+              <li>Valoraci&oacute;n y due diligence t&eacute;cnico</li>
+            </ul>
+            <a class="pill solid" href="./contacto.html">Solicitar asesor&iacute;a</a>
+          </div>
+          <div class="srv-panel-media">
+            <img src="./assets/consultation-service.jpg" alt="Asesoria Patrimonial LAA" loading="lazy" />
+          </div>
         </article>
 
-        <article class="panel reveal">
-          <p class="kicker">ARCHITECTURE VISION</p>
-          <h2>Arquitectura e interiorismo de legado</h2>
-          <p>Convertimos propiedades en piezas icónicas mediante diseño arquitectónico bespoke, materialidad premium y
-            ejecución con estándares internacionales.</p>
-          <ul class="srv-list">
-            <li>Concepto arquitectónico de autor</li>
-            <li>Remodelación y restauración integral</li>
-            <li>Interiorismo sensorial y marca personal</li>
-            <li>Supervisión y control de obra</li>
-          </ul>
-          <img class="panel-media" src="./assets/architecture-service.jpg" alt="Arquitectura de vanguardia" />
+        <article class="srv-panel srv-panel--reverse reveal">
+          <div class="srv-panel-content">
+            <p class="kicker">02 &mdash; CONCIERGE</p>
+            <h2>Concierge Inmobiliario</h2>
+            <p class="srv-panel-desc">Acompa&ntilde;amiento integral desde la b&uacute;squeda hasta la entrega de
+              llaves. Coordinamos arquitectos, notarios, bancos y servicios de lujo para que su experiencia sea
+              impecable.</p>
+            <ul class="srv-list">
+              <li>Selecci&oacute;n y visitas privadas</li>
+              <li>Negociaci&oacute;n y cierre</li>
+              <li>Gesti&oacute;n notarial y financiamiento</li>
+              <li>Onboarding y servicios post-compra</li>
+            </ul>
+            <a class="pill solid" href="./contacto.html">Conocer el servicio</a>
+          </div>
+          <div class="srv-panel-media">
+            <img src="./assets/architecture-service.jpg" alt="Concierge Inmobiliario LAA" loading="lazy" />
+          </div>
         </article>
+
+      </section>
+
+      <!-- STATS -->
+      <section class="stats-strip container reveal">
+        <div class="stat-pill"><span class="counter" data-target="14">0</span><small>A&ntilde;os de experiencia</small>
+        </div>
+        <div class="stat-pill"><span class="counter" data-target="320">0</span><small>Transacciones completadas</small>
+        </div>
+        <div class="stat-pill"><span class="counter" data-target="98">0</span><small>% clientes satisfechos</small>
+        </div>
+        <div class="stat-pill"><span>$12B+</span><small>MXN en activos gestionados</small></div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="inner-cta container">
+        <div class="cta-panel reveal">
+          <p class="kicker">LAA REAL ESTATE &mdash; PRIMERA CONSULTA SIN COSTO</p>
+          <h2>Comience con una conversaci&oacute;n privada.</h2>
+          <p>Nuestros asesores est&aacute;n disponibles para escuchar sus objetivos y dise&ntilde;ar una estrategia a su
+            medida.</p>
+          <a class="pill solid" href="./contacto.html">Agendar consulta</a>
+        </div>
       </section>
     </main>
 
     <footer class="container footer">
       <div class="footer-ed-brand">
         <b>LAA Real Estate</b>
-        <span>Paseo de la Reforma 250, Col. Juárez · CDMX 06600</span>
-        <span>contacto@laarealestate.com · +52 (55) 1234-5678</span>
+        <span>Paseo de la Reforma 250, Col. Ju&aacute;rez CDMX 06600</span>
+        <span>ventas@laarealstate.com · +52 (33) 2313-6849</span>
+        <span>
+          <a href="https://wa.me/5213323136849" target="_blank" rel="noopener">WhatsApp: +52 (33) 2313-6849</a>
+          &nbsp;·&nbsp;
+          <a href="https://instagram.com/laarealestate" target="_blank" rel="noopener">@laarealestate</a>
+        </span>
       </div>
       <div class="footer-ed-nav">
         <a href="./index.html">Inicio</a>
-        <a href="./coleccion.html">Colección</a>
+        <a href="./coleccion.html">Coleccion</a>
+        <a href="./servicios.html">Servicios</a>
         <a href="./contacto.html">Contacto</a>
       </div>
-      <p class="footer-ed-copy">© 2026 LAA Real Estate. Todos los derechos reservados.</p>
+      <p class="footer-ed-copy">&copy; 2026 LAA Real Estate. Todos los derechos reservados.</p>
     </footer>
   </div>
 

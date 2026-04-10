@@ -18,18 +18,48 @@
 </head>
 
 <body>
-  <div class="loader" id="loader" aria-live="polite">
+  <!-- INTRO GATE — pantalla previa al loader -->
+  <div class="intro-gate" id="introGate">
+    <div class="intro-gate-noise" aria-hidden="true"></div>
+    <div class="intro-gate-content">
+      <p class="intro-gate-brand">LAA <span>Real Estate</span></p>
+      <h1 class="intro-gate-title">Editorial Grand<br />Experience</h1>
+      <p class="intro-gate-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+        </svg>
+        Para una experiencia completa, activa las bocinas de tu dispositivo
+      </p>
+      <button class="intro-gate-btn" id="introGateBtn">
+        <span>Entrar a la experiencia</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true" width="16" height="16">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="loader" id="loader" aria-live="polite" style="display:none">
     <div class="loader-cinematic">
       <p class="loader-scene is-active">Editorial Grand Experience</p>
       <p class="loader-scene">Curaduría de activos excepcionales</p>
       <p class="loader-scene">Arquitectura, patrimonio y legado</p>
     </div>
+    <audio id="loaderVoice" src="./assets/voiceover intro.mp3" preload="auto" aria-hidden="true"></audio>
   </div>
 
   <div class="page home-luxe">
     <div class="luxe-noise" aria-hidden="true"></div>
     <div class="luxe-cursor" aria-hidden="true"></div>
     <div class="page-transition-overlay" aria-hidden="true"></div>
+    <div class="capa-overlay" aria-hidden="true">
+      <img src="./assets/Capa 11.svg" alt="" />
+    </div>
 
     <header class="topbar">
       <div class="container nav">
@@ -50,7 +80,8 @@
       <section class="hero-luxe container" id="inicio">
         <div class="hero-copy">
           <p class="kicker reveal">EDITORIAL GRAND EXPERIENCE · EST. 2001 · CDMX</p>
-          <h1 class="reveal-title" id="heroTitle">No vendemos propiedades.<br />Orquestamos legado patrimonial.</h1>
+          <h1 class="reveal-title" id="heroTitle">No vendemos propiedades.<br />Orquestamos<br />legado patrimonial.
+          </h1>
           <p class="reveal">LAA Real Estate transforma inversión inmobiliaria de alto patrimonio en una experiencia
             curada de arquitectura, estrategia de capital y estilo de vida extraordinario.</p>
           <div class="hero-cta reveal">
@@ -171,11 +202,54 @@
         <a class="pill solid reveal" href="./contacto.html">Activar consulta privada</a>
       </section>
 
+      <!-- VIDEO SECTION -->
+      <section class="video-luxe" id="video-section">
+        <div class="video-luxe-inner">
+          <div class="video-luxe-copy reveal">
+            <p class="kicker">EDITORIAL VISUAL · LAA REAL ESTATE</p>
+            <h2>La experiencia de vivir<br />lo extraordinario.</h2>
+          </div>
+          <div class="video-stage reveal">
+            <video class="video-luxe-player" id="heroVideo" src="./assets/video.mp4" autoplay loop muted playsinline
+              preload="metadata" aria-label="Video editorial LAA Real Estate"></video>
+            <div class="video-luxe-overlay" aria-hidden="true"></div>
+            <!-- Controles: play/pause + audio -->
+            <div class="video-controls">
+              <button class="video-play-btn" id="videoPlayBtn" aria-label="Pausar video" title="Pausar">
+                <svg class="play-icon play-icon--pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+                <svg class="play-icon play-icon--play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                  style="display:none">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </button>
+              <button class="video-audio-btn" id="videoAudioBtn" aria-label="Activar audio" title="Activar audio">
+                <svg class="audio-icon audio-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+                <svg class="audio-icon audio-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                  style="display:none">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="cta-luxe container">
         <div class="cta-panel reveal">
           <p class="kicker">LAA REAL ESTATE · PRIVATE OFFICE</p>
           <h2>Conversemos sobre su siguiente movimiento patrimonial.</h2>
-          <p>Paseo de la Reforma 250, Col. Juárez, CDMX · +52 (55) 1234-5678 · contacto@laarealestate.com</p>
+          <p>Paseo de la Reforma 250, Col. Juárez, CDMX · +52 (33) 2313-6849 · ventas@laarealstate.com</p>
           <a class="pill solid" href="./contacto.html">Solicitar sesión estratégica</a>
         </div>
       </section>
@@ -185,7 +259,12 @@
       <div class="footer-ed-brand">
         <b>LAA Real Estate</b>
         <span>Paseo de la Reforma 250, Col. Juárez · CDMX 06600</span>
-        <span>contacto@laarealestate.com · +52 (55) 1234-5678</span>
+        <span>ventas@laarealstate.com · +52 (33) 2313-6849</span>
+        <span>
+          <a href="https://wa.me/5213323136849" target="_blank" rel="noopener">WhatsApp: +52 (33) 2313-6849</a>
+          &nbsp;·&nbsp;
+          <a href="https://instagram.com/laarealestate" target="_blank" rel="noopener">@laarealestate</a>
+        </span>
       </div>
       <div class="footer-ed-nav">
         <a href="#inicio">Inicio</a>

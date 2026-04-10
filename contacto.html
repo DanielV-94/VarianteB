@@ -4,11 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAA Real Estate — Consulta Privada</title>
-  <meta name="description"
-    content="Agenda una consulta privada con LAA Real Estate. Estamos en Paseo de la Reforma 250, CDMX." />
-  <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23f4f1ec'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-size='46' font-family='Arial' fill='%238c5b2d'%3EL%3C/text%3E%3C/svg%3E" />
+  <title>LAA Real Estate - Consulta Privada</title>
+  <meta name="description" content="Agenda una consulta privada con LAA Real Estate." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,100 +15,149 @@
 </head>
 
 <body>
-  <div class="loader" id="loader" aria-live="polite">
+  <!-- LOADER -->
+  <div class="loader loader-inner" id="loader" aria-live="polite">
     <div class="loader-cinematic">
       <p class="loader-scene is-active">Consulta Privada</p>
-      <p class="loader-scene">Confidencialidad absoluta</p>
-      <p class="loader-scene">Estrategia patrimonial personalizada</p>
+      <p class="loader-scene">Agenda tu sesi&oacute;n</p>
     </div>
   </div>
-  <div class="page interior-luxe contact-page">
-    <div class="luxe-noise" aria-hidden="true"></div>
-    <div class="page-transition-overlay" aria-hidden="true"></div>
 
+  <!-- PAGE WRAPPER -->
+  <div class="page inner-luxe">
+    <div class="luxe-noise" aria-hidden="true"></div>
+    <div class="luxe-cursor" aria-hidden="true"></div>
+    <div class="page-transition-overlay" aria-hidden="true"></div>
+    <div class="scroll-progress-line" aria-hidden="true"></div>
+    <div class="capa-overlay" aria-hidden="true">
+      <img src="./assets/Capa 11.svg" alt="" />
+    </div>
+
+    <!-- NAV -->
     <header class="topbar">
       <div class="container nav">
         <a class="brand" href="./index.html">LAA <span>Real Estate</span></a>
         <nav class="links">
           <a href="./index.html">Inicio</a>
-          <a href="./coleccion.html">Colección</a>
+          <a href="./coleccion.html">Coleccion</a>
           <a href="./servicios.html">Servicios</a>
-          <a href="./contacto.html">Contacto</a>
+          <a href="./contacto.html" class="nav-active">Contacto</a>
         </nav>
-        <a class="pill" href="./index.html">Volver</a>
+        <a class="pill" href="./contacto.html">Consulta Privada</a>
       </div>
     </header>
 
-    <main class="container interior-main">
-      <section class="interior-hero reveal">
-        <div>
-          <p class="kicker">CONSULTA PRIVADA</p>
-          <h1 class="reveal-title interior-title">Hablemos sobre su próxima inversión de alto valor.</h1>
-          <p class="interior-lead">Nuestro equipo está listo para diseñar un plan estratégico a la medida de sus
-            objetivos de crecimiento y protección patrimonial.</p>
-          <div class="interior-badges reveal">
-            <span>Respuesta &lt; 24h</span>
-            <span>Atención ejecutiva</span>
-            <span>Sesión confidencial</span>
-          </div>
+    <main>
+      <!-- INNER HERO -->
+      <section class="inner-hero container">
+        <div class="inner-hero-eyebrow">
+          <span class="kicker reveal">CONSULTA PRIVADA &mdash; SIN COMPROMISO</span>
+          <span class="inner-hero-line" aria-hidden="true"></span>
         </div>
-        <div class="interior-hero-media reveal">
-          <img src="./assets/property-villa.jpg" alt="Consulta patrimonial privada" />
-        </div>
+        <h1 class="inner-h1 reveal-title" id="innerTitle">Hablemos de<br />sus objetivos.</h1>
+        <p class="inner-hero-sub reveal">La primera conversaci&oacute;n es confidencial y sin costo. Nuestro equipo
+          senior le contactar&aacute; en menos de 24 horas.</p>
       </section>
 
-      <section class="split interior-split">
-        <section class="panel reveal">
-          <p class="kicker">PRIVATE OFFICE</p>
-          <h2>Contacto directo con el equipo ejecutivo</h2>
-          <p>Agenda una sesión privada para revisar oportunidades, estructura de inversión y roadmap de ejecución para
-            su siguiente movimiento inmobiliario.</p>
-          <div class="contact-details">
-            <div>
-              <strong>Oficina</strong>
-              <p>Paseo de la Reforma 250<br />Col. Juárez, CDMX 06600</p>
-            </div>
-            <div>
-              <strong>Teléfonos</strong>
-              <p>+52 (55) 1234-5678<br />+52 (55) 8765-4321</p>
-            </div>
-            <div>
-              <strong>Email</strong>
-              <p>contacto@laarealestate.com<br />ventas@laarealestate.com</p>
-            </div>
-            <div>
-              <strong>Horario</strong>
-              <p>Lun–Vie 9:00–19:00<br />Sáb 10:00–14:00</p>
-            </div>
-          </div>
-        </section>
+      <!-- CONTACTO GRID -->
+      <section class="contacto-grid container">
 
-        <section class="panel reveal">
-          <form class="form" id="leadForm">
-            <label>Nombre<input id="name" name="name" type="text" required autocomplete="name" /></label>
-            <label>Correo<input id="email" name="email" type="email" required autocomplete="email" /></label>
-            <label>Teléfono<input id="phone" name="phone" type="tel" required autocomplete="tel" /></label>
-            <label>Meta comercial<textarea id="goal" name="goal" rows="4" required
-                placeholder="¿Qué tipo de propiedad busca o en qué servicio está interesado?"></textarea></label>
-            <button type="submit">Solicitar consulta privada</button>
-            <p class="feedback" id="feedback" aria-live="polite"></p>
+        <!-- INFO PANEL -->
+        <aside class="contacto-info reveal">
+          <div class="info-block">
+            <p class="kicker">UBICACION</p>
+            <p>Paseo de la Reforma 250<br />Col. Ju&aacute;rez, CDMX 06600</p>
+          </div>
+          <div class="info-block">
+            <p class="kicker">EMAIL</p>
+            <a href="mailto:ventas@laarealstate.com">ventas@laarealstate.com</a>
+          </div>
+          <div class="info-block">
+            <p class="kicker">TELEFONO</p>
+            <a href="tel:+5213323136849">+52 (33) 2313-6849</a>
+          </div>
+          <div class="info-block">
+            <p class="kicker">WHATSAPP</p>
+            <a href="https://wa.me/5213323136849" target="_blank" rel="noopener">+52 (33) 2313-6849</a>
+          </div>
+          <div class="info-block">
+            <p class="kicker">INSTAGRAM</p>
+            <a href="https://instagram.com/laarealestate" target="_blank" rel="noopener">@laarealestate</a>
+          </div>
+          <div class="info-block">
+            <p class="kicker">HORARIO</p>
+            <p>Lunes &ndash; Viernes<br />9:00 &ndash; 18:00 hrs</p>
+          </div>
+        </aside>
+
+        <!-- FORM -->
+        <div class="contacto-form-wrap reveal">
+          <form class="contacto-form" id="contactForm" novalidate>
+            <div class="form-field">
+              <input type="text" id="nombre" name="nombre" required autocomplete="name" />
+              <label for="nombre">Nombre completo</label>
+              <span class="field-bar"></span>
+            </div>
+            <div class="form-field">
+              <input type="email" id="email" name="email" required autocomplete="email" />
+              <label for="email">Correo electr&oacute;nico</label>
+              <span class="field-bar"></span>
+            </div>
+            <div class="form-field">
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" />
+              <label for="telefono">Tel&eacute;fono (opcional)</label>
+              <span class="field-bar"></span>
+            </div>
+            <div class="form-field">
+              <select id="interes" name="interes" required>
+                <option value="" disabled selected></option>
+                <option value="compra">Compra de propiedad</option>
+                <option value="venta">Venta de propiedad</option>
+                <option value="asesoria">Asesor&iacute;a patrimonial</option>
+                <option value="inversion">Inversi&oacute;n inmobiliaria</option>
+              </select>
+              <label for="interes">Motivo de contacto</label>
+              <span class="field-bar"></span>
+            </div>
+            <div class="form-field form-field--textarea">
+              <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+              <label for="mensaje">Mensaje (opcional)</label>
+              <span class="field-bar"></span>
+            </div>
+            <button type="submit" class="pill solid form-submit" id="formSubmit">
+              <span class="btn-text">Enviar solicitud</span>
+              <span class="btn-check" aria-hidden="true">&#10003;</span>
+            </button>
           </form>
-        </section>
+          <div class="form-success" id="formSuccess" aria-live="polite">
+            <p class="kicker">MENSAJE ENVIADO</p>
+            <h3>Gracias por contactarnos.</h3>
+            <p>Un asesor de LAA se comunicar&aacute; con usted en menos de 24 horas.</p>
+            <a class="pill" href="./index.html">Volver al inicio</a>
+          </div>
+        </div>
+
       </section>
     </main>
 
     <footer class="container footer">
       <div class="footer-ed-brand">
         <b>LAA Real Estate</b>
-        <span>Paseo de la Reforma 250, Col. Juárez · CDMX 06600</span>
-        <span>contacto@laarealestate.com · +52 (55) 1234-5678</span>
+        <span>Paseo de la Reforma 250, Col. Ju&aacute;rez CDMX 06600</span>
+        <span>ventas@laarealstate.com · +52 (33) 2313-6849</span>
+        <span>
+          <a href="https://wa.me/5213323136849" target="_blank" rel="noopener">WhatsApp: +52 (33) 2313-6849</a>
+          &nbsp;·&nbsp;
+          <a href="https://instagram.com/laarealestate" target="_blank" rel="noopener">@laarealestate</a>
+        </span>
       </div>
       <div class="footer-ed-nav">
         <a href="./index.html">Inicio</a>
-        <a href="./coleccion.html">Colección</a>
+        <a href="./coleccion.html">Coleccion</a>
         <a href="./servicios.html">Servicios</a>
+        <a href="./contacto.html">Contacto</a>
       </div>
-      <p class="footer-ed-copy">© 2026 LAA Real Estate. Todos los derechos reservados.</p>
+      <p class="footer-ed-copy">&copy; 2026 LAA Real Estate. Todos los derechos reservados.</p>
     </footer>
   </div>
 
