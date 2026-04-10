@@ -1,4 +1,39 @@
-﻿gsap.registerPlugin(ScrollTrigger);
+﻿/* ───────────────────────────────────────────────
+   Mobile nav toggle (no GSAP dependency — runs first)
+   ─────────────────────────────────────────────── */
+(function () {
+  const navToggle = document.getElementById("navToggle");
+  const mobileNav = document.getElementById("mobileNav");
+  if (!navToggle || !mobileNav) return;
+
+  const openMobileNav = () => {
+    mobileNav.classList.add("is-open");
+    navToggle.setAttribute("aria-expanded", "true");
+    mobileNav.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeMobileNav = () => {
+    mobileNav.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    mobileNav.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  navToggle.addEventListener("click", () => {
+    mobileNav.classList.contains("is-open") ? closeMobileNav() : openMobileNav();
+  });
+
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileNav);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 980) closeMobileNav();
+  });
+})();
+
+gsap.registerPlugin(ScrollTrigger);
 
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",

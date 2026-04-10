@@ -263,9 +263,122 @@ body.page-ready .page {
   color: rgba(200, 160, 100, 1);
 }
 
+/* ── Hamburger / mobile nav toggle ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+  background: rgba(154, 98, 51, 0.1);
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s, width 0.25s;
+  transform-origin: center;
+}
+
+.nav-toggle-bar:nth-child(1) { width: 22px; }
+.nav-toggle-bar:nth-child(2) { width: 16px; }
+.nav-toggle-bar:nth-child(3) { width: 22px; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  width: 22px;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  width: 22px;
+}
+
+/* ── Mobile nav panel ── */
+.mobile-nav {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  background: color-mix(in srgb, var(--bg) 96%, white 4%);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+.mobile-nav.is-open {
+  max-height: 520px;
+  padding: 0.8rem 0 1.2rem;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #4e4338;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(20, 20, 24, 0.07);
+  transition: color 0.2s, background 0.2s;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.nav-active {
+  color: #9a6233;
+  background: rgba(154, 98, 51, 0.05);
+}
+
+.mobile-nav .mobile-nav-cta {
+  margin: 1.2rem 1.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+  background: #14161d;
+  color: #f4ecdf;
+  border-color: #14161d;
+  text-align: center;
+}
+
+.mobile-nav .mobile-nav-cta:hover {
+  background: #2a2d38;
+  color: #f4ecdf;
+}
+
 @media (max-width: 980px) {
   .links {
     display: none;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
   }
 }
 
@@ -333,7 +446,8 @@ body.page-ready .page {
 .home-luxe .chapters,
 .home-luxe .manifiesto,
 .home-luxe .cta-luxe,
-.home-luxe .footer {
+.home-luxe .footer,
+.home-luxe .mobile-nav {
   position: relative;
   z-index: 2;
 }
@@ -354,6 +468,14 @@ body.page-ready .page {
 
 .home-luxe .links a:hover {
   color: var(--luxe-gold);
+}
+
+.home-luxe .nav-toggle-bar {
+  background: #4e4338;
+}
+
+.home-luxe .mobile-nav {
+  background: color-mix(in srgb, #f6f2ec 96%, white 4%);
 }
 
 .home-luxe .pill {
@@ -872,13 +994,22 @@ body.page-ready .page {
 .inner-luxe .contacto-grid,
 .inner-luxe .stats-strip,
 .inner-luxe .inner-cta,
-.inner-luxe .footer {
+.inner-luxe .footer,
+.inner-luxe .mobile-nav {
   position: relative;
   z-index: 2;
 }
 
 .inner-luxe .topbar {
   background: color-mix(in srgb, #f6f2ec 90%, white 10%);
+}
+
+.inner-luxe .nav-toggle-bar {
+  background: #4e4338;
+}
+
+.inner-luxe .mobile-nav {
+  background: color-mix(in srgb, #f6f2ec 96%, white 4%);
 }
 
 .inner-luxe .links a {
@@ -1449,6 +1580,53 @@ body.page-ready .page {
   .inner-hero {
     padding: 3.5rem 0 2.5rem;
   }
+
+  /* Footer: single column on mobile */
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .footer-ed-copy {
+    grid-column: 1;
+  }
+
+  /* Hero copy full-width, less padding on very small screens */
+  .hero-luxe {
+    padding-bottom: 2rem;
+  }
+
+  /* Manifiesto grid single column */
+  .manifiesto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CTA panel padding */
+  .cta-panel {
+    padding: 1.5rem 1.2rem;
+  }
+
+  /* Stats strip single column */
+  .stats-strip {
+    flex-direction: column;
+  }
+
+  /* Contacto form padding */
+  .contacto-form-wrap,
+  .contacto-info {
+    padding: 1.2rem;
+  }
+
+  /* Intro gate padding */
+  .intro-gate-content {
+    padding: 2rem 1.4rem;
+  }
+
+  /* Smaller font for intro gate title on very small screens */
+  .intro-gate-hint {
+    font-size: 0.74rem;
+    padding: 0.5rem 0.85rem;
+  }
 }
 
 /* ============================================================
@@ -1659,6 +1837,7 @@ body.page-ready .page {
 .home-luxe .video-luxe,
 .home-luxe .cta-luxe,
 .home-luxe .footer,
+.home-luxe .mobile-nav,
 .inner-luxe .topbar,
 .inner-luxe .inner-hero,
 .inner-luxe .coleccion-grid,
@@ -1666,7 +1845,8 @@ body.page-ready .page {
 .inner-luxe .contacto-grid,
 .inner-luxe .stats-strip,
 .inner-luxe .inner-cta,
-.inner-luxe .footer {
+.inner-luxe .footer,
+.inner-luxe .mobile-nav {
   position: relative;
   z-index: 2;
 }
