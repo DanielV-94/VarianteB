@@ -16,9 +16,8 @@ const loaderScenes = gsap.utils.toArray(".loader-scene");
 const runLoader = () => {
   if (!loader) return;
 
-  // Mostrar loader con fade in
-  gsap.set(loader, { display: "flex", autoAlpha: 0 });
-  gsap.to(loader, { autoAlpha: 1, duration: 0.4, ease: "power2.out" });
+  // Mostrar loader visible de inmediato (el fondo negro cubre la pantalla sin flash)
+  gsap.set(loader, { display: "flex", autoAlpha: 1 });
 
   const loaderTl = gsap.timeline();
 
@@ -57,14 +56,19 @@ const introGateBtn = document.getElementById("introGateBtn");
 
 if (introGate && introGateBtn) {
   introGateBtn.addEventListener("click", () => {
-    // 1. Animar salida del gate
+    // 1. Mostrar loader de fondo INMEDIATAMENTE (cubre el hero antes de que el gate desaparezca)
+    if (loader) {
+      gsap.set(loader, { display: "flex", autoAlpha: 0 });
+    }
+
+    // 2. Animar salida del gate
     introGate.classList.add("is-leaving");
 
-    // 2. Tras la animación de salida, ocultar gate y lanzar loader
+    // 3. Tras la animación de salida, fade-in del loader y reproducir audio
     setTimeout(() => {
       introGate.style.display = "none";
 
-      // 3. Reproducir voiceover (garantizado porque viene de click de usuario)
+      // Reproducir voiceover (garantizado porque viene de click de usuario)
       if (isHomeLuxe) {
         const loaderVoice = document.getElementById("loaderVoice");
         if (loaderVoice) {
@@ -73,7 +77,7 @@ if (introGate && introGateBtn) {
         }
       }
 
-      // 4. Lanzar animación del loader
+      // Lanzar animación del loader
       runLoader();
     }, 680); // coincide con duración de gateLeave
   });

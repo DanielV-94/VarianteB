@@ -35,7 +35,7 @@ img {
 .loader {
   position: fixed;
   inset: 0;
-  z-index: 150;
+  z-index: 600;
   background: #0f1116;
   color: #f8f4ea;
   display: grid;
@@ -229,6 +229,23 @@ img {
   margin: 0;
   font-size: 0.76rem;
   color: #aaa;
+  line-height: 1.8;
+}
+
+.footer-ed-credit {
+  font-size: 0.72rem;
+  color: rgba(170, 170, 170, 0.6);
+  letter-spacing: 0.03em;
+}
+
+.footer-ed-credit a {
+  color: rgba(200, 160, 100, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-ed-credit a:hover {
+  color: rgba(200, 160, 100, 1);
 }
 
 @media (max-width: 980px) {
@@ -1461,8 +1478,11 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 1.4rem;
-  padding: 2rem;
-  max-width: 560px;
+  padding: 2rem 3rem;
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .intro-gate-brand {
@@ -1486,6 +1506,8 @@ img {
   letter-spacing: -0.02em;
   color: #f4ede0;
   margin: 0;
+  width: 100%;
+  word-break: break-word;
   opacity: 0;
   transform: translateY(24px);
   animation: gateReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
