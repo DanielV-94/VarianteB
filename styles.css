@@ -629,6 +629,7 @@ body.page-ready .page {
 .home-luxe .signature-strip,
 .home-luxe .chapters,
 .home-luxe .manifiesto,
+.home-luxe .video-luxe,
 .home-luxe .cta-luxe,
 .home-luxe .footer {
   position: relative;
@@ -666,6 +667,9 @@ body.page-ready .page {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s;
 }
 
 .home-luxe .pill.solid::after {
@@ -685,6 +689,14 @@ body.page-ready .page {
 
 .home-luxe .pill.solid:hover::after {
   animation: luxeShine 0.9s ease;
+}
+
+.home-luxe .pill.solid:hover {
+  box-shadow: 0 8px 28px rgba(20, 22, 29, 0.22);
+}
+
+.home-luxe .pill:active {
+  transform: scale(0.97) !important;
 }
 
 .home-luxe .pill.ghost {
@@ -2063,32 +2075,13 @@ body.page-ready .page {
   z-index: 0;
   background-image: url("./assets/Capa 11.svg");
   background-repeat: repeat;
-  background-size: 520px auto;
-  opacity: 0.22;
+  background-size: 480px auto;
+  opacity: 0.55;
   mix-blend-mode: overlay;
-  filter: saturate(1.3) blur(0.6px);
+  filter: saturate(1.1);
 }
 
-/* asegurar que secciones queden sobre el overlay */
-.home-luxe .topbar,
-.home-luxe .hero-luxe,
-.home-luxe .signature-strip,
-.home-luxe .chapters,
-.home-luxe .manifiesto,
-.home-luxe .video-luxe,
-.home-luxe .cta-luxe,
-.home-luxe .footer,
-.inner-luxe .topbar,
-.inner-luxe .inner-hero,
-.inner-luxe .coleccion-grid,
-.inner-luxe .srv-section,
-.inner-luxe .contacto-grid,
-.inner-luxe .stats-strip,
-.inner-luxe .inner-cta,
-.inner-luxe .footer {
-  position: relative;
-  z-index: 2;
-}
+/* Las secciones quedan sobre el overlay via los bloques z-index de .home-luxe y .inner-luxe */
 
 /* ============================================================
    VIDEO LUXE SECTION
