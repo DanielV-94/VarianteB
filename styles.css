@@ -2073,7 +2073,7 @@ body.page-ready .page {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: url("./assets/Capa 11.svg");
+  background-image: url("./assets/overlay.svg");
   background-repeat: repeat;
   background-size: 480px auto;
   opacity: 0.55;
