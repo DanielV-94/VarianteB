@@ -2066,24 +2066,6 @@ body.page-ready .page {
 }
 
 /* ============================================================
-   CAPA 11 SVG OVERLAY (todas las páginas)
-   ============================================================ */
-.capa-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("./assets/overlay.svg");
-  background-repeat: repeat;
-  background-size: 480px auto;
-  opacity: 0.55;
-  mix-blend-mode: overlay;
-  filter: saturate(1.1);
-}
-
-/* Las secciones quedan sobre el overlay via los bloques z-index de .home-luxe y .inner-luxe */
-
-/* ============================================================
    VIDEO LUXE SECTION
    ============================================================ */
 .video-luxe {
