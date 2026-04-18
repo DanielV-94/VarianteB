@@ -546,13 +546,13 @@ body.page-ready .page {
     font-size: clamp(1.4rem, 6vw, 2rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(245, 238, 220, 0.85);
+    color: rgba(246, 217, 145, 0.85);
     transition: color 0.2s;
   }
 
   .links a:hover,
   .links a.nav-active {
-    color: #c8903c;
+    color: #eea940;
   }
 
   /* Botón hamburguesa — líneas blancas cuando el panel está abierto */
@@ -652,6 +652,7 @@ body.page-ready .page {
 
 .home-luxe .links a:hover {
   color: var(--luxe-gold);
+  transform: scale(1.1);
 }
 
 .home-luxe .pill {
