@@ -1,4 +1,58 @@
-﻿gsap.registerPlugin(ScrollTrigger);
+﻿const hasGSAP = typeof window.gsap !== "undefined";
+const hasScrollTrigger = typeof window.ScrollTrigger !== "undefined";
+
+const gsap = hasGSAP
+  ? window.gsap
+  : {
+      registerPlugin: () => {},
+      set: (_target, vars = {}) => {
+        if (typeof vars.onComplete === "function") vars.onComplete();
+      },
+      to: (_target, vars = {}) => {
+        if (typeof vars.onComplete === "function") vars.onComplete();
+        return {};
+      },
+      fromTo: (_target, _fromVars, toVars = {}) => {
+        if (typeof toVars.onComplete === "function") toVars.onComplete();
+        return {};
+      },
+      timeline: (opts = {}) => {
+        const api = {
+          to: (_target, vars = {}) => {
+            if (typeof vars.onComplete === "function") vars.onComplete();
+            return api;
+          },
+          fromTo: (_target, _fromVars, toVars = {}) => {
+            if (typeof toVars.onComplete === "function") toVars.onComplete();
+            return api;
+          },
+        };
+        if (typeof opts.onComplete === "function") {
+          setTimeout(opts.onComplete, 0);
+        }
+        return api;
+      },
+      utils: {
+        toArray: (selector) => Array.from(document.querySelectorAll(selector)),
+      },
+    };
+
+const ScrollTrigger = hasScrollTrigger
+  ? window.ScrollTrigger
+  : {
+      create: () => {},
+      batch: () => {},
+      update: () => {},
+      refresh: () => {},
+    };
+
+if (hasGSAP && hasScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+if (!hasGSAP) {
+  document.body.classList.add("page-ready");
+}
 
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -1060,6 +1114,12 @@ const initHamburger = () => {
     document.body.style.overflow = "hidden";
   };
 
+  const syncViewportState = () => {
+    if (!window.matchMedia("(max-width: 980px)").matches) {
+      close();
+    }
+  };
+
   // Cerrar al hacer clic en un enlace del menú
   nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", close);
@@ -1073,6 +1133,9 @@ const initHamburger = () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && btn.classList.contains("is-open")) close();
   });
+
+  window.addEventListener("resize", syncViewportState, { passive: true });
+  window.addEventListener("orientationchange", syncViewportState);
 };
 
 /* ───────────────────────────────────────────────

@@ -54,7 +54,7 @@ img {
 
 /* La página permanece invisible hasta que JS la desbloquea */
 .page {
-  visibility: hidden;
+  visibility: visible;
 }
 body.page-ready .page {
   visibility: visible;
@@ -529,6 +529,8 @@ body.page-ready .page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     gap: 2rem;
     opacity: 0;
     pointer-events: none;
@@ -1121,7 +1123,7 @@ body.page-ready .page {
   /* Cada article se convierte en tarjeta de imagen full */
   .chapter {
     position: relative;
-    min-height: 520px;
+    min-height: clamp(360px, 70vh, 520px);
     border-radius: 1.4rem;
     overflow: hidden;
     border: none;
